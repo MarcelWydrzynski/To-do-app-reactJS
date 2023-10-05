@@ -1,7 +1,15 @@
 .header {
-    border: 5px solid rgb(67, 67, 67);
-    padding: 5px 10px;
+   
     border-radius: 25px;
     margin: auto;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 }
     
+.date-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

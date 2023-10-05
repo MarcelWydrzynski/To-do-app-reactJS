@@ -1,15 +1,20 @@
 import React, { useState } from "react";
 import "./App.scss";
 import Header from "./components/Header";
-import AddUserForm from "./components/addUserForm";
-import UserList from "./components/UserList";
+import AddTaskForm from "./components/AddTaskForm";
+import TaskList from "./components/TaskList";
+
 
 function App() {
   const [taskList, setTaskList] = useState([]);
 
+
   const addTaskHandler = (tName, tCategory) => {
     setTaskList((prevTaskList) => {
-      return [...prevTaskList, { ID: Math.random(), TaskName: tName, Category: tCategory }];
+      return [
+        ...prevTaskList,
+        { ID: Math.random(), TaskName: tName, Category: tCategory },
+      ];
     });
   };
 
@@ -17,11 +22,18 @@ function App() {
     setTaskList(updatedTaskList);
   };
 
+  const deleteAllTasksHandler = () => {
+    setTaskList([])
+  }
+
+  
+  
+
   return (
     <div className="app-container">
       <Header />
-      <AddUserForm onSubmit={addTaskHandler} />
-      <UserList tasks={taskList} onDelete={deleteTaskHandler} />
+      <AddTaskForm onSubmit={addTaskHandler} />
+      <TaskList tasks={taskList} onDelete={deleteTaskHandler} clearList={deleteAllTasksHandler}/>
     </div>
   );
 }
